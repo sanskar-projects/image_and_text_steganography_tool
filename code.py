@@ -100,3 +100,5 @@ def main():
         exit(0)
     else:
         print("Invalid choice.")
+
+main()
