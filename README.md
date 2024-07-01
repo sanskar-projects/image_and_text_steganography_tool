@@ -54,4 +54,6 @@ Upon running the script, the user is prompted to select an option from the main 
 ### Conclusion
 This steganography tool is a practical implementation for hiding and revealing secret data within images. It serves as a useful demonstration of steganographic techniques and provides a hands-on approach for exploring data concealment within digital images.
 
-This project has been developed with the help of generative artificial intelligence.
+### Acknowledgment
+
+This project description and code enhancements were assisted by generative artificial intelligence.
