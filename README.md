@@ -1,53 +1,57 @@
-### Project Description
+## Project Description: Image and Text Steganography Tool
 
-#### Overview
+### Overview
+This project provides a set of Python scripts that enable users to hide and reveal secret images and text within cover images using steganography techniques. Steganography is the practice of concealing messages or information within other non-secret text or data. The tool leverages the Python Imaging Library (PIL) to manipulate image pixels and embed secret data in an imperceptible way.
 
-This Python project implements a simple steganography tool using the Pillow library. The project allows users to hide one image inside another (cover image) and then retrieve the hidden image. The project features a command-line user interface for ease of use.
+### Features
+1. **Hide an Image within Another Image:**
+   - Embed a secret image within a cover image.
+   - Ensure the cover image is large enough to accommodate the secret image.
+   - Modify the least significant bits (LSBs) of the cover image's pixels to encode the secret image's pixels.
 
-#### Features
+2. **Reveal an Image from a Stego Image:**
+   - Extract a hidden image from a stego image.
+   - Use the size of the original secret image to correctly interpret and reconstruct the hidden image.
 
-1. **Hide Image**:
-    - **Input**: Cover image path, secret image path, and output image path.
-    - **Process**: The secret image is hidden inside the cover image by modifying the least significant bits (LSBs) of the cover image's pixels to store the secret image's pixel data.
-    - **Output**: A new image file with the hidden image embedded.
+3. **Hide Text within an Image:**
+   - Convert text to binary format and embed it within a cover image.
+   - Use LSB modification to store text data in the cover image's pixel values.
+   - Append a delimiter "###" to mark the end of the hidden text.
 
-2. **Reveal Image**:
-    - **Input**: Stego image path (image with the hidden content), output image path, and the size of the hidden image.
-    - **Process**: The hidden image is extracted from the stego image by retrieving the least significant bits (LSBs) of the stego image's pixels.
-    - **Output**: The revealed hidden image saved as a new file.
+4. **Unhide Text from an Image:**
+   - Extract and decode hidden text from a stego image.
+   - Identify the end of the hidden text using the delimiter "###".
+   - Return an appropriate message if no hidden text is found.
 
-#### Functions
+### Functions
+- `hide_image(cover_path, secret_path, output_path)`: Embeds a secret image within a cover image and saves the output.
+- `reveal_image(stego_image_path, output_path, size)`: Extracts a hidden image from a stego image and saves the revealed image.
+- `hide_text_in_image(cover_path, text, output_path)`: Converts text to binary and embeds it within a cover image, saving the output.
+- `unhide_text_in_image(stego_image_path)`: Extracts and decodes hidden text from a stego image, returning the text or an error message.
+- `get_image_dimensions(image_path)`: Returns the dimensions (width, height) of an image.
+- `main()`: Provides a command-line interface for users to choose between the available options: hide an image, reveal an image, hide text in an image, unhide text from an image, or exit the program.
 
-1. **hide_image(cover_path, secret_path, output_path)**:
-    - This function takes the path of the cover image, the path of the secret image, and the path where the output image will be saved.
-    - It ensures that the cover image is large enough to contain the secret image.
-    - It then hides the secret image in the cover image by manipulating the LSBs of the cover image's pixels.
-    - Finally, it saves the modified cover image as the output image.
+### Usage
+Upon running the script, the user is prompted to select an option from the main menu. Depending on the chosen option, the user will be asked to provide the necessary file paths and text inputs. The tool then performs the corresponding steganographic operation and provides feedback on the process completion.
 
-2. **reveal_image(stego_image_path, output_path, size)**:
-    - This function takes the path of the stego image (cover image with the hidden content), the path where the revealed image will be saved, and the size of the hidden image.
-    - It extracts the hidden image from the stego image by reading the LSBs of the stego image's pixels.
-    - The revealed image is then saved as a new file.
+### Example
+- **Hide an Image:**
+  - Input: Paths to cover image, secret image, and output image.
+  - Process: Embeds the secret image into the cover image and saves the result.
 
-3. **get_image_dimensions(image_path)**:
-    - This helper function takes the path of an image file and returns its width and height.
+- **Reveal an Image:**
+  - Input: Path to stego image and output image.
+  - Process: Extracts and saves the hidden image from the stego image.
 
-#### User Interface
+- **Hide Text:**
+  - Input: Path to cover image, text to hide, and output image.
+  - Process: Embeds the text into the cover image and saves the result.
 
-The user interface is a simple command-line menu that allows users to choose between hiding an image, revealing an image, or exiting the program. It prompts the user for the necessary file paths and then calls the appropriate function to perform the requested operation.
+- **Unhide Text:**
+  - Input: Path to stego image.
+  - Process: Extracts and displays the hidden text or an error message if no text is found.
 
-#### Usage
+### Conclusion
+This steganography tool is a practical implementation for hiding and revealing secret data within images. It serves as a useful demonstration of steganographic techniques and provides a hands-on approach for exploring data concealment within digital images.
 
-1. **Run the Program**:
-   - Execute the script to start the command-line interface.
-   
-2. **Choose an Option**:
-   - `1`: Hide an image
-   - `2`: Reveal an image
-   - `3`: Exit
-
-3. **Follow Prompts**:
-   - For hiding an image, provide the cover image path, secret image path, and output image path.
-   - For revealing an image, provide the stego image path and output image path. The script will determine the size of the hidden image.
-
-This project has been developed with the help of artificial intelligence.
+This project has been developed with the help of generative artificial intelligence.
